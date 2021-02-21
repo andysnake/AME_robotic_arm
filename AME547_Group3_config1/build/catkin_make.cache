@@ -1,0 +1,2 @@
+moveit_config_ur10:moveit_config_ur5:process_visualizer:universal_robot/universal_robot:universal_robot/universal_robots:universal_robot/ur10_moveit_config:universal_robot/ur5_moveit_config:universal_robot/ur_bringup:universal_robot/ur_description:universal_robot/ur_driver:universal_robot/ur_gazebo:universal_robot/ur_kinematics:universal_robot/ur_msgs:ur_planning
+-DCATKIN_DEVEL_PREFIX=/home/andybro/Final_project_code/AME547_Group3_config1/devel -DCMAKE_INSTALL_PREFIX=/home/andybro/Final_project_code/AME547_Group3_config1/install -G Unix Makefiles

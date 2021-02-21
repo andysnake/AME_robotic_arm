@@ -1,0 +1,8 @@
+prefix=/home/andybro/Final_project_code/AME547_Group3_config1/devel
+
+Name: process_visualizer
+Description: Description of process_visualizer
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

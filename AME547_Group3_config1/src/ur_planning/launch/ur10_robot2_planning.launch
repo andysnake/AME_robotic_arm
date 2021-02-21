@@ -1,0 +1,28 @@
+<launch>
+
+ <group ns="ur10_robot2">
+  <rosparam command="load" file="$(find moveit_config_ur10)/config/joint_names.yaml" />
+
+  <include file="$(find moveit_config_ur10)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/joint_states]</rosparam>
+  </node> -->
+
+  <include file="$(find moveit_config_ur10)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true"/>
+     <arg name="allow_trajectory_execution" value="true"/>
+  </include>
+
+  <!-- <include file="$(find moveit_config_ur10)/launch/moveit_rviz_robot2.launch">
+    <arg name="config" value="true"/>
+  </include> -->
+
+  <node name="ur10_robot2_planning" pkg="ur_planning" type="ur10_robot2_move_group" respawn="false" output="screen"/>
+
+ </group>
+ <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_ur10" args=" -0.5, -0.5, 0.3, -0.0, -0.0, 0.0 world ur10_robot2_tf/base_link 100" respawn="true"/>   -->
+ </launch>

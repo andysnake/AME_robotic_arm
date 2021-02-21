@@ -1,0 +1,8 @@
+prefix=/home/andybro/Final_project_code/AME547_Group3_config1/devel
+
+Name: ur5_moveit_config
+Description: Description of ur5_moveit_config
+Version: 1.2.7
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

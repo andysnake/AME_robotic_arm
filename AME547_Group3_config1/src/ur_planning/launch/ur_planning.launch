@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find ur_planning)/launch/ur5_robot1_planning.launch"/>
+
+  <include file="$(find ur_planning)/launch/ur10_robot2_planning.launch"/>
+
+</launch>

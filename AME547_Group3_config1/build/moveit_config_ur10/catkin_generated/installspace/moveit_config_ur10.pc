@@ -1,0 +1,8 @@
+prefix=/home/andybro/Final_project_code/AME547_Group3_config1/install
+
+Name: moveit_config_ur10
+Description: Description of moveit_config_ur10
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

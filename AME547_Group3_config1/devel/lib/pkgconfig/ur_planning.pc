@@ -1,0 +1,8 @@
+prefix=/home/andybro/Final_project_code/AME547_Group3_config1/devel
+
+Name: ur_planning
+Description: Description of ur_planning
+Version: 0.0.0
+Cflags: -I/home/andybro/Final_project_code/AME547_Group3_config1/src/ur_planning/include
+Libs: -L${prefix}/lib 
+Requires: 

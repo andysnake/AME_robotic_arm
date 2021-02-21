@@ -1,0 +1,75 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+  <arg name= "limited" default= "false"/>
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+
+ <!-- <arg name="world_name" value="$(find process_visualizer)/urdf/animated_box.world"/> -->
+
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+<!-- Spawn a table for robot 1 into Gazebo -->
+  <node name="spawn_urdf_arm_basis_1" pkg="gazebo_ros" type="spawn_model" args="-file $(find process_visualizer)/urdf/arm_basis1.urdf -urdf -x -0.1 -y -0.1 -z 0 -R 1.5707963 -P 0 -Y 0 -model arm_basis_1" />
+<!-- Spawn a table for robot 2 into Gazebo -->
+  <node name="spawn_urdf_arm_basis_2" pkg="gazebo_ros" type="spawn_model" args="-file $(find process_visualizer)/urdf/arm_basis2.urdf -urdf -x 1.85 -y 0.3 -z 0 -R 1.5707963 -P 0 -Y 0 -model arm_basis_2" /> 
+<!-- Spawn a shelf into Gazebo -->
+  <node name="spawn_urdf_shelf" pkg="gazebo_ros" type="spawn_model" args="-file $(find process_visualizer)/urdf/shelf.urdf -urdf -x 0.55 -y -0.375 -z 0 -R 1.5707963 -P 0 -Y 0 -model shelf" />
+<!-- Spawn a platform into Gazebo -->
+  <node name="spawn_urdf_platform1" pkg="gazebo_ros" type="spawn_model" args="-file $(find process_visualizer)/urdf/platform.urdf -urdf -x 0.2 -y 0.8 -z 0 -R -1.5707963 -P -3.1415926 -Y 0 -model platform1" />
+  <node name="spawn_urdf_platform2" pkg="gazebo_ros" type="spawn_model" args="-file $(find process_visualizer)/urdf/platform.urdf -urdf -x 1.35 -y -0.8 -z 0 -R 1.5707963 -P 0 -Y 0 -model platform2" />
+<!-- Spawn a box into Gazebo -->
+  <!-- <node name="spawn_urdf_box" pkg="gazebo_ros" type="spawn_model" args="-file $(find process_visualizer)/urdf/box.world -urdf -x -0.3 -y 0.5 -z 0.48 -R 0 -P 0 -Y 1.5707963 -model box" /> -->
+
+
+   <param name="box_description" command="$(find xacro)/xacro --inorder $(find process_visualizer)/urdf/box_ur5.xacro"/>
+    <!-- <node name="box_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" args="robot_description:=box_description" /> -->
+    <node name="spawn_object1" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x -1.1 -y 0.6 -z 0.58 -R 0 -P 0 -Y 0 -model ur5_robot1_box1"/>
+    <node name="spawn_object2" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x -1.1 -y 0.6 -z 0.58 -R 0 -P 0 -Y 0 -model ur5_robot1_box2"/>
+    <node name="spawn_object3" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x -1.1 -y 0.6 -z 0.58 -R 0 -P 0 -Y 0 -model ur5_robot1_box3"/>
+    <node name="spawn_object4" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x -1.1 -y 0.6 -z 0.58 -R 0 -P 0 -Y 0 -model ur5_robot1_box4"/>
+    <node name="spawn_object5" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x -1.1 -y 0.6 -z 0.58 -R 0 -P 0 -Y 0 -model ur5_robot1_box5"/>
+    <node name="spawn_object6" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x -1.1 -y 0.6 -z 0.58 -R 0 -P 0 -Y 0 -model ur5_robot1_box6"/>
+
+
+    <param name="box_description" command="$(find xacro)/xacro --inorder $(find process_visualizer)/urdf/box_ur10.xacro"/>
+    <node name="spawn_object7" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x 2.65 -y -0.6 -z 0.58 -R 0 -P 0 -Y 3.1415926 -model ur10_robot2_box1"/>
+    <node name="spawn_object8" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x 2.65 -y -0.6 -z 0.58 -R 0 -P 0 -Y 3.1415926 -model ur10_robot2_box2"/>
+    <node name="spawn_object9" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x 2.65 -y -0.6 -z 0.58 -R 0 -P 0 -Y 3.1415926 -model ur10_robot2_box3"/>
+    <node name="spawn_object10" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x 2.65 -y -0.6 -z 0.58 -R 0 -P 0 -Y 3.1415926 -model ur10_robot2_box4"/>
+    <node name="spawn_object11" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x 2.65 -y -0.6 -z 0.58 -R 0 -P 0 -Y 3.1415926 -model ur10_robot2_box5"/>
+    <node name="spawn_object12" pkg="gazebo_ros" type="spawn_model" args="-param box_description -urdf -x 2.65 -y -0.6 -z 0.58 -R 0 -P 0 -Y 3.1415926 -model ur10_robot2_box6"/>
+    <!-- launch node -->
+    <!-- <node pkg="panda_simulation" type="box_publisher_node" name="box_publisher_node" /> -->
+
+    <group ns="ur5_robot1"> 
+    <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+    <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_joint_limited_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+    <param name="tf_prefix" value="ur5_robot1_tf" /> 
+      <include file="$(find ur_gazebo)/launch/ur5.launch">
+        <arg name="init_pose" value="-x 0 -y 0 -z 0.3"/>
+         <arg name="robot_name" value="ur5_robot1"/>
+      </include> 
+    </group> 
+
+   <group ns="ur10_robot2">
+    <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur10_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+    <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur10_joint_limited_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+    <param name="tf_prefix" value="ur10_robot2_tf" />
+      <include file="$(find ur_gazebo)/launch/ur10.launch">
+        <arg name="init_pose" value="-x 1.95 -y 0.4 -z 0.5"/>
+        <arg name="robot_name" value="ur10_robot2"/>
+      </include>
+    </group>
+<!-- <node pkg="tf" type="static_transform_publisher" name="world_to_ur5" args=" -0.1, -0.1, 0.0, -0.0, -0.0, 0.0 world ur5_robot1/base 300" respawn="true"/> 
+<node pkg="tf" type="static_transform_publisher" name="world_to_ur10" args=" 1.85, 0.3, 0.0, -0.0, -0.0, 0.0 world ur10_robot2_tf/base_link 300" respawn="true"/>  -->
+
+</launch>

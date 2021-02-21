@@ -1,0 +1,8 @@
+prefix=/home/andybro/Final_project_code/AME547_Group3_config1/devel
+
+Name: ur_gazebo
+Description: Description of ur_gazebo
+Version: 1.2.7
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

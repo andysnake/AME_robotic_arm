@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot name="platform">
+  <link name="platform">
+    <visual>
+      	<geometry>
+          	<mesh filename="package://process_visualizer/resources/platform.STL"/>
+      	</geometry>
+	  	<!-- <material name="darkorange" >
+          	<color rgba="1 0.55 0 1.0" />
+         </material> 	 -->
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+       <mass value="1"/>
+      <inertia
+        ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+
+  <gazebo reference="platform">
+    <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="platform"/>
+  </joint>
+
+</robot>
